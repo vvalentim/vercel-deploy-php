@@ -1,0 +1,17 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Controllers\\": "src/Controllers",
+      "Handlers\\": "src/Handlers"
+    }
+  },
+  "require": {
+    "pecee/simple-router": "^5.4"
+  },
+  "scripts": {
+    "dev": [
+      "Composer\\Config::disableProcessTimeout",
+      "@php -S localhost:8080 -t public/ dev-server.php"
+    ]
+  }
+}
