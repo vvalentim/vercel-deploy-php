@@ -5,15 +5,15 @@ use Pecee\SimpleRouter\SimpleRouter as Router;
 
 Router::group(["namespace" => "\\Controllers"], function () {
     Router::get("/", "Home@index");
-    Router::get("/session-test", "Home@sessionTest");
     Router::get("/greet/{name?}", "Home@greet")->where(["name" => "[a-zA-Z]+"]);
+    Router::get("/session-test", "Home@sessionTest");
+    Router::get("/config-db-test", "Home@configDbTest");
 });
 
 Router::group(["namespace" => "\\Handlers"], function () {
     Router::get("/not-found", "Generic@notFound");
     Router::get("/forbidden", "Generic@forbidden");
 });
-
 
 Router::error(function (Request $request, Exception $exception) {
     switch ($exception->getCode()) {
@@ -25,3 +25,5 @@ Router::error(function (Request $request, Exception $exception) {
             response()->redirect('/forbidden');
     }
 });
+
+Router::start();
