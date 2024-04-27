@@ -1,3 +1,3 @@
 <?php
 
-require_once(__DIR__ . "/../dev-server.php");
+require_once(__DIR__ . "/../public/index.php");

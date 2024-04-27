@@ -3,9 +3,15 @@
 use Pecee\Http\Request;
 use Pecee\SimpleRouter\SimpleRouter as Router;
 
-Router::get("/", function () {
+Router::get("/", fn () => "Home.");
+
+Router::get("/greet/{name?}", function (?string $name = null) {
+    if (!empty($name)) {
+        return "Hello {$name}!";
+    }
+
     return "Hello world!";
-});
+})->where(["name" => "[a-zA-Z]+"]);
 
 Router::group(["namespace" => "\\Handlers"], function () {
     Router::get("/not-found", "Generic@notFound");
