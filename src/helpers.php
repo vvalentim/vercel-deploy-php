@@ -86,3 +86,14 @@ function csrf_token(): ?string
 
     return null;
 }
+
+function dump(mixed $var, bool $die = false): void
+{
+    echo "<pre>";
+    var_dump($var);
+    echo "</pre>";
+
+    if ($die) {
+        die();
+    }
+}
